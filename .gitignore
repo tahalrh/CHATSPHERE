@@ -1,0 +1,18 @@
+node_modules/
+dist/
+.env
+# .env.example sont committés (pas de secrets dedans — servez-vous en comme modèle)
+!*.env.example
+
+# Bot configs — ancienne version JSON (remplacée par SQLite)
+backend/configs.json
+backend/configs.json.migrated
+
+# Base de données SQLite et backups (contiennent des clés API)
+backend/chatsphere.db
+backend/chatsphere.db-wal
+backend/chatsphere.db-shm
+backend/backups/
+
+# Knowledge base may contain sensitive business data
+backend/*_knowledge.json

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="UrbanStep — Boutique de chaussures de sport premium. Livraison gratuite dès 80€, retours sous 30 jours." />
+  <title>UrbanStep — Sneakers & Running</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #007bff;
+      --brand-dark: #0056cc;
+      --bg: #f8f9fb;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 14px;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px;
+    }
+    .logo {
+      font-size: 22px; font-weight: 800; color: var(--brand);
+      letter-spacing: -0.04em; text-decoration: none;
+    }
+    .logo span { color: var(--text); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted); font-size: 14px;
+      font-weight: 500; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--brand); }
+    .nav-right { display: flex; gap: 12px; align-items: center; }
+    .btn {
+      padding: 9px 20px; border-radius: 8px; font-size: 14px;
+      font-weight: 600; cursor: pointer; border: none; transition: all .2s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary { background: var(--brand); color: #fff; }
+    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--brand); border: 1.5px solid var(--brand); }
+    .btn-outline:hover { background: var(--brand); color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0a1628 0%, #0d2445 50%, #0a1628 100%);
+      color: #fff; padding: 80px 24px;
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-block; background: rgba(0,123,255,0.2);
+      border: 1px solid rgba(0,123,255,0.4);
+      color: #60a5fa; font-size: 12px; font-weight: 600;
+      padding: 5px 12px; border-radius: 20px; margin-bottom: 20px;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .hero h1 { font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.03em; }
+    .hero h1 span { color: #60a5fa; }
+    .hero p { font-size: 17px; color: rgba(255,255,255,0.7); margin-bottom: 32px; max-width: 460px; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-img {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 140px; filter: drop-shadow(0 20px 40px rgba(0,123,255,0.3));
+    }
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 40px; padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-num { font-size: 28px; font-weight: 800; color: #60a5fa; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+    /* ── PROMO BANNER ── */
+    .promo-banner {
+      background: linear-gradient(90deg, var(--brand) 0%, #0056cc 100%);
+      color: #fff; text-align: center; padding: 14px 24px;
+      font-size: 14px; font-weight: 500;
+    }
+    .promo-banner strong { font-weight: 700; }
+
+    /* ── SECTIONS ── */
+    section { padding: 64px 24px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-tag {
+      display: inline-block; background: rgba(0,123,255,0.1); color: var(--brand);
+      font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;
+    }
+    .section-header h2 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .section-header p { color: var(--muted); font-size: 16px; max-width: 500px; margin: 0 auto; }
+
+    /* ── CATEGORIES ── */
+    .categories { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .cat-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 20px; text-align: center;
+      cursor: pointer; transition: all .2s;
+    }
+    .cat-card:hover { border-color: var(--brand); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,123,255,0.12); }
+    .cat-icon { font-size: 36px; margin-bottom: 12px; }
+    .cat-name { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .cat-count { font-size: 12px; color: var(--muted); }
+
+    /* ── PRODUITS ── */
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .product-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; transition: all .2s;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+    .product-img {
+      background: linear-gradient(135deg, #f0f4ff, #e8f0fe);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 72px; height: 200px; position: relative;
+    }
+    .badge {
+      position: absolute; top: 12px; left: 12px;
+      padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;
+    }
+    .badge-new { background: #10b981; color: #fff; }
+    .badge-sale { background: #ef4444; color: #fff; }
+    .badge-hot { background: #f59e0b; color: #fff; }
+    .product-body { padding: 20px; }
+    .product-brand { font-size: 11px; color: var(--brand); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .product-name { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .product-desc { font-size: 13px; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .price { font-size: 20px; font-weight: 800; color: var(--text); }
+    .price-old { font-size: 14px; color: var(--muted); text-decoration: line-through; margin-left: 6px; }
+    .stars { color: #f59e0b; font-size: 13px; }
+    .reviews { font-size: 12px; color: var(--muted); margin-left: 4px; }
+    .product-sizes { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+    .size-tag {
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 3px 9px; font-size: 12px; font-weight: 500; color: var(--muted);
+    }
+
+    /* ── AVANTAGES ── */
+    .advantages { background: #fff; }
+    .adv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .adv-card {
+      text-align: center; padding: 32px 20px;
+      border: 1px solid var(--border); border-radius: var(--radius);
+    }
+    .adv-icon { font-size: 32px; margin-bottom: 14px; }
+    .adv-title { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+    .adv-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── FAQ ── */
+    .faq { background: #fff; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .faq-item {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+    }
+    .faq-q { font-weight: 700; font-size: 15px; margin-bottom: 10px; color: var(--text); }
+    .faq-a { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── INFOS PRATIQUES ── */
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .info-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+    }
+    .info-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .info-card ul { list-style: none; }
+    .info-card li { font-size: 14px; color: var(--muted); padding: 5px 0; border-bottom: 1px solid var(--border); }
+    .info-card li:last-child { border-bottom: none; }
+    .info-card li strong { color: var(--text); font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a1628; color: rgba(255,255,255,0.6);
+      padding: 48px 24px 24px; text-align: center;
+    }
+    footer .footer-logo { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    footer p { font-size: 13px; margin-bottom: 8px; }
+    footer .footer-links { display: flex; gap: 24px; justify-content: center; margin-top: 24px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 900px) {
+      .hero-inner, .products-grid, .faq-grid { grid-template-columns: 1fr; }
+      .categories, .adv-grid, .info-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size: 34px; }
+      .hero-img { font-size: 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PROMO -->
+  <div class="promo-banner">
+    🎉 Soldes d'été : <strong>-30% sur toute la collection Running</strong> — Code : <strong>SUMMER30</strong> &nbsp;|&nbsp; Livraison gratuite dès 80€
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="nav">
+      <a href="#" class="logo">Urban<span>Step</span></a>
+      <ul class="nav-links">
+        <li><a href="#produits">Produits</a></li>
+        <li><a href="#categories">Catégories</a></li>
+        <li><a href="#avantages">Services</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#infos">Infos pratiques</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="#" class="btn btn-outline">Se connecter</a>
+        <a href="#" class="btn btn-primary">Panier (0)</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">Nouvelle collection 2026</div>
+        <h1>Les meilleures <span>sneakers</span> au meilleur prix</h1>
+        <p>Découvrez notre sélection de chaussures de sport premium — running, lifestyle et trail. Confort, style et performance au quotidien.</p>
+        <div class="hero-cta">
+          <a href="#produits" class="btn btn-primary">Voir la collection</a>
+          <a href="#faq" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3)">En savoir plus</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">12 000+</div>
+            <div class="stat-label">Clients satisfaits</div>
+          </div>
+          <div>
+            <div class="stat-num">4.8/5</div>
+            <div class="stat-label">Note moyenne</div>
+          </div>
+          <div>
+            <div class="stat-num">48h</div>
+            <div class="stat-label">Livraison express</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-img">👟</div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section id="categories" style="background:#fff;">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Nos univers</div>
+        <h2>Trouvez votre style</h2>
+        <p>Chaque paire est choisie pour sa qualité, son confort et son design.</p>
+      </div>
+      <div class="categories">
+        <div class="cat-card">
+          <div class="cat-icon">🏃</div>
+          <div class="cat-name">Running</div>
+          <div class="cat-count">48 modèles</div>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🏀</div>
+          <div class="cat-name">Basketball</div>
+          <div class="cat-count">24 modèles</div>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🥾</div>
+          <div class="cat-name">Trail</div>
+          <div class="cat-count">31 modèles</div>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">✨</div>
+          <div class="cat-name">Lifestyle</div>
+          <div class="cat-count">67 modèles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUITS -->
+  <section id="produits">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Bestsellers</div>
+        <h2>Nos articles les plus populaires</h2>
+        <p>Sélectionnés par notre équipe et plébiscités par nos clients.</p>
+      </div>
+      <div class="products-grid">
+
+        <!-- Produit 1 -->
+        <div class="product-card">
+          <div class="product-img">
+            👟
+            <span class="badge badge-hot">🔥 Populaire</span>
+          </div>
+          <div class="product-body">
+            <div class="product-brand">Nike</div>
+            <div class="product-name">Air Max 270</div>
+            <div class="product-desc">Amorti Air Max visible sur toute la semelle. Tige en mesh respirant. Idéale pour un usage quotidien ou fitness léger.</div>
+            <div class="product-sizes">
+              <span class="size-tag">39</span><span class="size-tag">40</span><span class="size-tag">41</span>
+              <span class="size-tag">42</span><span class="size-tag">43</span><span class="size-tag">44</span>
+            </div>
+            <div style="margin-bottom:14px"><span class="stars">★★★★★</span><span class="reviews">(342 avis)</span></div>
+            <div class="product-footer">
+              <div><span class="price">149€</span><span class="price-old">179€</span></div>
+              <button class="btn btn-primary" style="padding:8px 16px;font-size:13px">Ajouter au panier</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 2 -->
+        <div class="product-card">
+          <div class="product-img" style="background:linear-gradient(135deg,#fff0f0,#ffe4e4)">
+            🥿
+            <span class="badge badge-new">Nouveau</span>
+          </div>
+          <div class="product-body">
+            <div class="product-brand">Adidas</div>
+            <div class="product-name">Ultraboost 23</div>
+            <div class="product-desc">Technologie Boost pour un retour d'énergie exceptionnel. Semelle Continental pour l'adhérence sur sol mouillé. Running longue distance.</div>
+            <div class="product-sizes">
+              <span class="size-tag">38</span><span class="size-tag">39</span><span class="size-tag">40</span>
+              <span class="size-tag">42</span><span class="size-tag">44</span><span class="size-tag">45</span>
+            </div>
+            <div style="margin-bottom:14px"><span class="stars">★★★★★</span><span class="reviews">(218 avis)</span></div>
+            <div class="product-footer">
+              <div><span class="price">189€</span></div>
+              <button class="btn btn-primary" style="padding:8px 16px;font-size:13px">Ajouter au panier</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 3 -->
+        <div class="product-card">
+          <div class="product-img" style="background:linear-gradient(135deg,#f0fff4,#dcfce7)">
+            👟
+            <span class="badge badge-sale">-30%</span>
+          </div>
+          <div class="product-body">
+            <div class="product-brand">New Balance</div>
+            <div class="product-name">Fresh Foam 1080v13</div>
+            <div class="product-desc">Mousse Fresh Foam ultra-douce. Conception pour les coureurs longue distance. Disponible en coloris exclusif UrbanStep.</div>
+            <div class="product-sizes">
+              <span class="size-tag">40</span><span class="size-tag">41</span><span class="size-tag">42</span>
+              <span class="size-tag">43</span><span class="size-tag">44</span>
+            </div>
+            <div style="margin-bottom:14px"><span class="stars">★★★★☆</span><span class="reviews">(156 avis)</span></div>
+            <div class="product-footer">
+              <div><span class="price">139€</span><span class="price-old">199€</span></div>
+              <button class="btn btn-primary" style="padding:8px 16px;font-size:13px">Ajouter au panier</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 4 -->
+        <div class="product-card">
+          <div class="product-img" style="background:linear-gradient(135deg,#fefce8,#fef9c3)">
+            🥾
+          </div>
+          <div class="product-body">
+            <div class="product-brand">Salomon</div>
+            <div class="product-name">Speedcross 6</div>
+            <div class="product-desc">Crampon agressif pour le trail. Semelle Contagrip pour une adhérence maximale sur terrains boueux. Tige Sensifit pour maintien précis.</div>
+            <div class="product-sizes">
+              <span class="size-tag">40</span><span class="size-tag">41</span><span class="size-tag">42</span>
+              <span class="size-tag">43</span><span class="size-tag">44</span><span class="size-tag">46</span>
+            </div>
+            <div style="margin-bottom:14px"><span class="stars">★★★★★</span><span class="reviews">(94 avis)</span></div>
+            <div class="product-footer">
+              <div><span class="price">129€</span></div>
+              <button class="btn btn-primary" style="padding:8px 16px;font-size:13px">Ajouter au panier</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 5 -->
+        <div class="product-card">
+          <div class="product-img" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
+            👟
+            <span class="badge badge-new">Nouveau</span>
+          </div>
+          <div class="product-body">
+            <div class="product-brand">On Running</div>
+            <div class="product-name">Cloudmonster 2</div>
+            <div class="product-desc">Technologie CloudTec brevetée. Amorti exceptionnel pour la route. Design épuré, plébiscité par les marathoniens amateurs.</div>
+            <div class="product-sizes">
+              <span class="size-tag">39</span><span class="size-tag">40</span><span class="size-tag">41</span>
+              <span class="size-tag">42</span><span class="size-tag">43</span>
+            </div>
+            <div style="margin-bottom:14px"><span class="stars">★★★★★</span><span class="reviews">(77 avis)</span></div>
+            <div class="product-footer">
+              <div><span class="price">169€</span></div>
+              <button class="btn btn-primary" style="padding:8px 16px;font-size:13px">Ajouter au panier</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 6 -->
+        <div class="product-card">
+          <div class="product-img" style="background:linear-gradient(135deg,#fff7ed,#ffedd5)">
+            🩴
+            <span class="badge badge-sale">-20%</span>
+          </div>
+          <div class="product-body">
+            <div class="product-brand">Asics</div>
+            <div class="product-name">Gel-Kayano 30</div>
+            <div class="product-desc">Technologie Gel double densité. Idéale pour les pronateurs. Maintien et stabilité sur longue distance. Semelle FlyteFoam Blast+.</div>
+            <div class="product-sizes">
+              <span class="size-tag">38</span><span class="size-tag">39</span><span class="size-tag">41</span>
+              <span class="size-tag">42</span><span class="size-tag">43</span><span class="size-tag">44</span>
+            </div>
+            <div style="margin-bottom:14px"><span class="stars">★★★★☆</span><span class="reviews">(203 avis)</span></div>
+            <div class="product-footer">
+              <div><span class="price">151€</span><span class="price-old">189€</span></div>
+              <button class="btn btn-primary" style="padding:8px 16px;font-size:13px">Ajouter au panier</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AVANTAGES -->
+  <section id="avantages" class="advantages">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Pourquoi UrbanStep</div>
+        <h2>Nos engagements</h2>
+        <p>Chaque commande est traitée avec soin et expédiée rapidement.</p>
+      </div>
+      <div class="adv-grid">
+        <div class="adv-card">
+          <div class="adv-icon">🚚</div>
+          <div class="adv-title">Livraison gratuite</div>
+          <div class="adv-desc">Offerte dès 80€ d'achat. Livraison standard en 3-5 jours ouvrés, express en 24-48h pour 7,90€.</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-icon">↩️</div>
+          <div class="adv-title">Retours 30 jours</div>
+          <div class="adv-desc">Pas satisfait ? Retournez vos articles sous 30 jours, remboursement intégral sous 5 jours ouvrés.</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-icon">🔒</div>
+          <div class="adv-title">Paiement sécurisé</div>
+          <div class="adv-desc">Paiement par carte bancaire, PayPal ou en 3x sans frais avec Alma. Données 100% chiffrées.</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-icon">💬</div>
+          <div class="adv-title">Support 7j/7</div>
+          <div class="adv-desc">Notre équipe répond en moins de 2h par email ou chat. Disponible du lundi au dimanche, 8h–20h.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">FAQ</div>
+        <h2>Questions fréquentes</h2>
+        <p>Toutes les réponses à vos questions en un clin d'œil.</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-q">Comment choisir ma pointure ?</div>
+          <div class="faq-a">Nos chaussures sont disponibles du 36 au 48. Nous recommandons de prendre votre pointure habituelle. Pour les modèles de running à semelle épaisse (Ultraboost, Fresh Foam), prenez une demi-pointure au-dessus. Un guide des tailles complet est disponible sur chaque fiche produit.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Quels sont les délais de livraison ?</div>
+          <div class="faq-a">Livraison standard : 3 à 5 jours ouvrés, gratuite dès 80€ (sinon 4,90€). Livraison express : 24 à 48h pour 7,90€. Les commandes passées avant 14h sont expédiées le jour même (lundi–vendredi).</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Comment retourner un article ?</div>
+          <div class="faq-a">Vous avez 30 jours après réception pour retourner tout article non porté, dans son emballage d'origine. Connectez-vous à votre compte, initiez le retour, puis déposez le colis en point relais. Le remboursement est effectué sous 5 jours ouvrés.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Le code promo SUMMER30 est-il cumulable ?</div>
+          <div class="faq-a">Non, les codes promo ne sont pas cumulables entre eux. Le code SUMMER30 offre -30% sur toute la collection Running et est valable jusqu'au 31 août 2026. Il n'est pas applicable sur les articles déjà soldés.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Puis-je payer en plusieurs fois ?</div>
+          <div class="faq-a">Oui ! Nous proposons le paiement en 3x sans frais avec Alma pour toute commande entre 100€ et 2 000€. Le paiement en 4x est disponible dès 150€. Option disponible à la caisse.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Les chaussures sont-elles authentiques ?</div>
+          <div class="faq-a">Absolument. UrbanStep est revendeur officiel agréé Nike, Adidas, New Balance, Salomon, On Running et Asics. Toutes nos chaussures sont neuves, authentiques et accompagnées de leur emballage d'origine.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFOS PRATIQUES -->
+  <section id="infos">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Informations</div>
+        <h2>Tout ce qu'il faut savoir</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>🚚 Livraison</h3>
+          <ul>
+            <li><strong>Standard (3-5j)</strong> — Gratuit dès 80€, sinon 4,90€</li>
+            <li><strong>Express (24-48h)</strong> — 7,90€</li>
+            <li><strong>Point relais</strong> — 3,50€</li>
+            <li><strong>Heure limite expédition</strong> — 14h (lun-ven)</li>
+            <li><strong>Transporteurs</strong> — Colissimo, DPD, Mondial Relay</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>💳 Paiement</h3>
+          <ul>
+            <li><strong>Carte bancaire</strong> — Visa, Mastercard, Amex</li>
+            <li><strong>PayPal</strong> — Disponible</li>
+            <li><strong>3x sans frais</strong> — Dès 100€ avec Alma</li>
+            <li><strong>4x sans frais</strong> — Dès 150€ avec Alma</li>
+            <li><strong>Chèque cadeau</strong> — Disponible de 20€ à 200€</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>📞 Contact & Horaires</h3>
+          <ul>
+            <li><strong>Email</strong> — contact@urbanstep.fr</li>
+            <li><strong>Chat</strong> — 7j/7, 8h–20h</li>
+            <li><strong>Téléphone</strong> — 01 23 45 67 89</li>
+            <li><strong>Réponse email</strong> — Sous 2h en moyenne</li>
+            <li><strong>Magasin Paris</strong> — 12 rue du Sport, 75011</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">UrbanStep</div>
+    <p>Votre boutique de sneakers premium depuis 2019</p>
+    <p>12 rue du Sport, 75011 Paris &nbsp;|&nbsp; contact@urbanstep.fr &nbsp;|&nbsp; 01 23 45 67 89</p>
+    <div class="footer-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">CGV</a>
+      <a href="#">Politique de confidentialité</a>
+      <a href="#">Plan du site</a>
+    </div>
+    <p style="margin-top:24px;font-size:12px;opacity:.4">© 2026 UrbanStep. Tous droits réservés.</p>
+  </footer>
+
+  <!-- WIDGET CHATSPHERE -->
+  <script>
+    // Remplacez bot_id par celui de votre bot si nécessaire
+  </script>
+  <script src="http://localhost:3001/widget/widget.js"
+          data-bot-id="mog07soe"
+          data-server="http://localhost:3001">
+  </script>
+
+</body>
+</html>

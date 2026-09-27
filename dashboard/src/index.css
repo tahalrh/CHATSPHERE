@@ -1,0 +1,18 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #060d1a;
+  color: #E8EEF4;
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+input, textarea, select, button { font-family: inherit; }
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1C3A5E; border-radius: 4px; }
+
+::selection { background: #00A8CC33; }
+
+input[type="color"] { cursor: pointer; }

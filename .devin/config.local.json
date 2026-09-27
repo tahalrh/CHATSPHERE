@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Exec(find)",
+      "Exec(npm install)",
+      "Exec(npm uninstall)",
+      "Exec(node)",
+      "Exec(mkdir)",
+      "Exec(python)",
+      "Exec(ls)",
+      "Exec(npm run)",
+      "Exec(sqlite3)",
+      "Exec(curl)",
+      "Exec(grep)",
+      "Exec(head)",
+      "Exec(netstat)",
+      "Exec(taskkill)",
+      "Exec(sleep)"
+    ]
+  }
+}

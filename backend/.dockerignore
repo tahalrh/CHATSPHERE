@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.env
+*.env
+chatsphere.db
+chatsphere.db-wal
+chatsphere.db-shm
+backups/
+configs.json
+configs.json.migrated
